@@ -1,0 +1,43 @@
+.header-auth {
+  display: flex;
+  align-items: center;
+  font-family: Inter;  
+  font-style: normal;
+  font-weight: 500;  
+}
+
+.header-auth__signup {
+
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 30px;
+  text-decoration: none;  
+  transition: 0.1s linear 0.1s;
+  color: #000;
+}
+
+.header-auth__signup:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.header-auth__signin {
+  width: 76px;
+  height: 32px;
+  color: #fff;
+  background: #3456F3;
+  border-radius: 3px;
+  border: 0;
+  font-size: 12px;
+  line-height: 16px;
+  transition: 0.1s linear 0.1s;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 0;
+  box-sizing: border-box;  
+}
+
+.header-auth__signin:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
