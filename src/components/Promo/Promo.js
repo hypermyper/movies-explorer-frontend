@@ -9,9 +9,9 @@ function Promo() {
           Учебный проект студента факультета Веб-разработки.
         </h1>
         <ul className="promo__navi">
-            <li class="promo__navi-element"><a className="promo__navi-link" href="#about">О проекте</a></li>
-            <li class="promo__navi-element"><a className="promo__navi-link" href="#about">Технологии</a></li>
-            <li class="promo__navi-element"><a className="promo__navi-link" href="#about">Студент</a></li>
+            <li className="promo__navi-element"><a className="promo__navi-link" href="#about">О проекте</a></li>
+            <li className="promo__navi-element"><a className="promo__navi-link" href="#about">Технологии</a></li>
+            <li className="promo__navi-element"><a className="promo__navi-link" href="#about">Студент</a></li>
         </ul>
       </div>
     </section>
