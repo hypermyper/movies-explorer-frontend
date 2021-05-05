@@ -18,18 +18,8 @@ function AboutMe() {
 							заниматься фриланс-заказами.
 						</p>
 						<div className="about-me__links">
-							<a
-								className="about-me__link"
-								href="https://www.facebook.com/zenkin.ru"
-							>
-								Facebook
-							</a>
-							<a
-								className="about-me__link"
-								href="https://github.com/hypermyper"
-							>
-								Github
-							</a>
+							<a className="about-me__link"	href="https://www.facebook.com/zenkin.ru">Facebook</a>
+							<a className="about-me__link"	href="https://github.com/hypermyper">Github</a>
 						</div>
 					</div>
 					<img className="about-me__avatar" src={Avatar} alt="аватар" />

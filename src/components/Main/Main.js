@@ -14,8 +14,8 @@ import Footer from '../Footer/Footer';
 function Main() {
   return (
     <>
-			<Header className="header">
-				<Logo className="header__logo" mainPage />
+			<Header>
+				<Logo mainPage />
 				<Auth />
 			</Header>
   		<Promo />

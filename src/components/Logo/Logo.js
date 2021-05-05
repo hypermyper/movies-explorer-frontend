@@ -7,9 +7,9 @@ function Logo(props) {
     <>
 				{
 					props.mainPage ? 
-						<div className={props.className}></div> :
+						<div className="header__logo"></div> :
 						<Link to="/">
-							<div className={props.className}></div>
+							<div className="header__logo header__logo_active"></div>
 						</Link>
 				}					
 		</>
