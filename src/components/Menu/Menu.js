@@ -12,16 +12,14 @@ function Menu(props) {
           type="button"
           onClick={props.onClose}
         />
-        <nav className="header-nav popup-navlink">
+        <nav className="popup-nav__wrap">
           <Link to="/" className="popup__nav">Главная</Link>
-          <Link to="/movies" className="header-nav__movies popup__nav">Фильмы</Link>
-          <Link to="/movies" className="header-nav__saved-movies popup__nav">Сохраненные фильмы</Link>
+          <Link to="/movies" className="popup__nav">Фильмы</Link>
+          <Link to="/movies" className="popup__nav">Сохраненные фильмы</Link>
         </nav>
-        <div className="header-auth">
-          <Link to="/profile">
-            <div className="header__profile popup__nav" />
-          </Link>
-        </div>
+				<Link to="/profile" className="header-auth__link header-auth__link_popup">
+					Аккаунт <div className="header__profile" />
+				</Link>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import Form from "../Form/Form";
 
@@ -31,11 +32,14 @@ function Login(props) {
 
   return (
     <>
+			<Helmet>
+				<title>Авторизация / Навигатор по фильмам</title>
+			</Helmet>	
       <Form
         name="Enter"
         id="form-enter"
         title="Рады видеть!"
-        isLoading={props.isLoading ? "Вход..." : "Войти"}
+        isLoading={props.isLoading ? "Вход…" : "Войти"}
         isOpen={props.isOpen}
         onSubmit={handleSubmit}
         Link={

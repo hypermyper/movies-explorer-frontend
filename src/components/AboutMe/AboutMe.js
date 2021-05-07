@@ -3,6 +3,7 @@ import Avatar from '../../images/avatar.jpeg';
 import "./AboutMe.css";
 
 function AboutMe() {
+
   return (
 		<>
 			<section className="about-me" id="aboutMe">
@@ -27,6 +28,7 @@ function AboutMe() {
 			</section>
 		</>
   );
+	
 }
 
 export default AboutMe;

@@ -1,10 +1,10 @@
 .header-nav {
 	display: flex;
 	align-items: center;
+	width: 100%;
 }
 
 .header-nav__movies {
-	font-family: Inter;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 13px;
@@ -13,6 +13,7 @@
 	margin: 0 16px 0 44px;
 	transition: 0.1s linear 0.1s;
 	display: block;
+	color: #000;
 }
 
 .header-nav__movies:hover {
@@ -21,12 +22,11 @@
 }
 
 .header-nav__saved-movies {
-	font-family: Inter;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 13px;
 	line-height: 18px;
-	color: #000000;
+	color: #000;
 	text-decoration: none;
 	transition: 0.1s linear 0.1s;
 	display: block;
@@ -37,9 +37,12 @@
 	cursor: pointer;
 }
 
-.header-auth {
+.header-auth__link {
 	display: flex;
 	align-items: center;
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
 }
 
 .header-auth__register {
@@ -55,18 +58,21 @@
 }  
 
 .header__profile {
-	background: url(../../images/profile.svg) center no-repeat;
-	background-size: cover;
+	background: url(../../images/profile.svg) center no-repeat #f4f4f4;
+	background-size: 11px;
 	width: 11px;
 	height: 14px;
 	display: block;
+	padding: 8px;
+	border-radius: 4px;
+	margin-left: 17px;
 }
 
 .header__menu {
 	background: url(../../images/menu.svg) center no-repeat;
 	background-size: cover;
-	width: 44px;
-	height: 44px;
+	width: 28px;
+	height: 23px;
 	padding: 0;
 	transition: 0.1s linear 0.1s;
 	display: none;
@@ -76,3 +82,13 @@
 	opacity: 0.8;
 	cursor: pointer;
 }  
+
+@media screen and (max-width: 768px) {
+	.header-nav, .header-auth__link {
+		display: none;
+	}
+
+  .header__menu {
+    display: block;
+  }	
+}

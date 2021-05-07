@@ -10,10 +10,10 @@ function Navigation(props) {
         <Link to="/movies" className="header-nav__saved-movies">Сохраненные фильмы</Link>
       </nav>
       <div className="header-auth">
-        <Link to="/profile">
-          <div className="header__profile" />
+        <Link to="/profile" className="header-auth__link">
+          Аккаунт <div className="header__profile" />
         </Link>
-        <div className="header__menu" onClick={props.onClick}/>
+        <div className="header__menu" onClick={props.onClick} />
       </div>
     </>
   );
