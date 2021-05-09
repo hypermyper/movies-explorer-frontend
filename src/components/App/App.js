@@ -6,6 +6,8 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import LostPage from '../LostPage/LostPage';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
 import Menu from "../Menu/Menu";
 
 function App() {
@@ -14,7 +16,6 @@ function App() {
 
   function handleMenu() {
     setIsMenuOpen(!isMenuOpen);
-		console.log('menuOpen');
   }
 
   function closeMenu() {
@@ -35,6 +36,12 @@ function App() {
 				</Route>			
 				<Route path="/movies">
 					<Movies onMenu={handleMenu} />
+				</Route>
+				<Route path="/saved-movies">
+					<SavedMovies onMenu={handleMenu} />
+				</Route>	
+				<Route path="/profile">
+					<Profile onMenu={handleMenu} />
 				</Route>
         <Route path="*">
           <LostPage />

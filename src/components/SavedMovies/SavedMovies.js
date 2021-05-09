@@ -4,21 +4,20 @@ import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import "../Movies/Movies.css";
 import Footer from "../Footer/Footer";
 
-function Movies(props) {
+function SavedMovies(props) {
     return (
 			<>
 				<Header>
 					<Logo />
 					<Navigation onClick={props.onMenu} />
 				</Header>
-				<SearchForm />	
-					<MoviesCardList />				
+				<SearchForm />
+					<MoviesCardList showSavedMovies={true}/>				
 				<Footer />
     </>
     );
 }
 
-export default Movies;
+export default SavedMovies;

@@ -32,11 +32,10 @@ function Register(props) {
 				id="form-register"
 				title="Добро пожаловать!"
 				isLoading={props.isLoading ? "Регистрация…" : "Зарегистрироваться"}
-				isOpen={props.isOpen}
 				onSubmit={handleSubmit}
 				Link={
 					<Link to="/sign-in" className="form__request-auth">
-						Уже зарегистрированны?<span className="form__request-span"> Войти</span> 
+						Уже зарегистрированны? <span className="form__request-span">Войти</span> 
 					</Link>
 				}
 			>

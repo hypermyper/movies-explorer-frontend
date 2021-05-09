@@ -7,7 +7,7 @@ function Navigation(props) {
     <>
       <nav className="header-nav">
         <Link to="/movies" className="header-nav__movies">Фильмы</Link>
-        <Link to="/movies" className="header-nav__saved-movies">Сохраненные фильмы</Link>
+        <Link to="/saved-movies" className="header-nav__saved-movies">Сохраненные фильмы</Link>
       </nav>
       <div className="header-auth">
         <Link to="/profile" className="header-auth__link">
