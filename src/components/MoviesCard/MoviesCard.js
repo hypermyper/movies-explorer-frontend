@@ -1,27 +1,87 @@
 import React from "react";
 import "./MoviesCard.css";
+import { BASE_LINK } from '../../utils/constants';
+import noImage from '../../images/noimage.svg';
 
 function MoviesCard(props) {
+  const isLiked = !props.isSavedMovies && props.likedMovies(props.movie);
+
+  function handleLikeClick() {
+    props.onAddMovie({
+      country: props.movie.country,
+      director: props.movie.director,
+      duration: props.movie.duration,
+      year: props.movie.year,
+      description: props.movie.description,
+      image: `${BASE_LINK}${props.movie.image ? props.movie.image.url : ""}`,
+      trailer: props.movie.trailerLink,
+      thumbnail: `${BASE_LINK}${
+        props.movie.image.formats.thumbnail
+          ? props.movie.image.formats.thumbnail.url
+          : ""
+      }`,
+      movieId: props.movie.id,
+      nameRU: props.movie.nameRU,
+      nameEN: props.movie.nameEN,
+      isSaved: props.movie.isSaved,
+    });
+  }
+
+  function handleDeleteClick() {
+    props.onDelete(props.movie);
+  }  
+
     return (
   		<>
         <article className="movie-card">
           <div className="movie-card__body">
             <h3 className="movie-card__title">
-              {props.name}
+              {props.name || props.movie.nameRU}
             </h3>
             <p className="movie-card__duration">
-              {props.duration}
+              {`${Math.floor(
+                (props.duration || props.movie.duration) / 60
+              )} ч ${(props.duration || props.movie.duration) % 60} мин`}
             </p>
           </div>
-          <img className="movie-card__photo" src={props.image} alt={props.name} />
-          {props.isSavedMovie ? (
-            <button className="movie-card__button movie-card__button_delete" type="submit"></button>
+          <a
+            href={props.trailerLink || props.trailer}
+            target="_blank"
+            rel="noreferrer nofollow"
+            className="movie-card__link"
+          >          
+            <img 
+              className="movie-card__photo" 
+              src={
+                props.isSavedMovies
+                  ? props.movie.image
+                  : `${
+                      props.movie.image !== null ? `${BASE_LINK}${props.movie.image.url}` : props.image ? props.image : noImage
+                    }`
+              }
+              alt={props.name}
+            />
+          </a>
+          {props.isSavedMovies ? (
+            <button 
+              className="movie-card__button movie-card__button_delete" 
+              type="submit" 
+              onClick={handleDeleteClick}>
+            </button>
           ) : (
             <>
-              {props.isSavedMovieOn ? (
-                <button className="movie-card__button movie-card__button_saved" type="submit"></button>
+              {isLiked ? (
+                <button 
+                  className="movie-card__button movie-card__button_saved" 
+                  type="submit" 
+                  onClick={handleLikeClick}>
+                </button>
               ) : (
-                <button className="movie-card__button" type="submit"></button>
+                <button 
+                  className="movie-card__button" 
+                  type="submit" 
+                  onClick={handleLikeClick}>
+                </button>
               )}
             </>
           )}

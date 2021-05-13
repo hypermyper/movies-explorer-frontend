@@ -20,6 +20,11 @@
 	object-position: top;
 	width: 100%;
 	height: 200px;	
+	transition: all 0.7s ease-in-out;	
+}
+
+.movie-card__photo:hover {
+	transform: scale(1.1);
 }
 
 .movie-card__body {
@@ -113,6 +118,13 @@
 	content: url(../../images/movies-button-delete-icon.svg);
 }
 
+.movie-card__link {
+	overflow: hidden;
+}
+
+.movies-nofound {
+	text-align: center;
+}
 
 @media screen and (max-width: 1190px) {
 	.movies {

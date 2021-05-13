@@ -33,6 +33,8 @@
 .form__handlers {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin: 220px 0 16px;  
 }
 
 .submit__button-form {
@@ -55,6 +57,11 @@
 .submit__button-form:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.submit__button-form_disabled {
+  color: #c2c2c2;
+  background: #f8f8f8;
 }
 
 .form__field-text {
@@ -122,6 +129,19 @@
 .form__item:focus {
   outline: none;
   border: 1px solid #3456f5;
+}
+
+.form__item_right:focus {
+  outline: none;
+  border: 1px solid #2be080;
+}
+
+.form__item-error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #ff004c;
 }
 
 .form__item_auth {

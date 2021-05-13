@@ -13,10 +13,24 @@ function SavedMovies(props) {
 					<Logo />
 					<Navigation onClick={props.onMenu} />
 				</Header>
-				<SearchForm />
-					<MoviesCardList showSavedMovies={true}/>				
+				<SearchForm 
+					onGetMovies={props.onGetMovies} 
+					onFilter={props.onFilter}
+					isShortMovie={props.isShortMovie}
+				/>
+				{props.movies.length > 0 ? (
+					<MoviesCardList 
+						isSavedMovies={props.isSavedMovies}
+						movies={props.movies}
+						onGetMovies={props.onGetMovies}
+						onDelete={props.onDelete}
+						message={props.message}
+					/>
+					) : (
+						<p className="movies-message">Нет сохранённых фильмов</p>
+					)}
 				<Footer />
-    </>
+    	</>
     );
 }
 

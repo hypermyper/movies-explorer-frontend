@@ -5,14 +5,32 @@ import Form from "../Form/Form";
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [formValid, setFormValid] = useState(false);  
 
   function handleChangeEmail(e) {
+    const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
+      e.target.value
+    );
+
+    if (!validEmail) {
+      setEmailError("Неверный формат почты");
+    } else {
+      setEmailError("");
+    }
     setEmail(e.target.value);
   }
 
   function handleChangePassword(e) {
+    if (e.target.value.length < 6) {
+      setPasswordError("Пароль должен быть не менее 6 символов");
+    } else {
+      setPasswordError("");
+    }
     setPassword(e.target.value);
   }
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,13 +47,20 @@ function Login(props) {
     }
   }, [props.loggedIn]);
 
+  useEffect(() => {
+    if (email && password && !emailError && !passwordError) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+    }
+  }, [email, password, emailError, passwordError]);  
+
   return (
     <>
       <Form
-        name="Enter"
-        id="form-enter"
+        name="Login"
+        id="form-login"
         title="Рады видеть!"
-        isLoading={props.isLoading ? "Вход…" : "Войти"}
         onSubmit={handleSubmit}
         Link={
           <Link to="/sign-up" className="form__request-auth">
@@ -47,34 +72,46 @@ function Login(props) {
           E-mail
           <input
             id="email-input"
-            className="form__item"
+            className={`form__item ${
+              emailError ? "form__item-error" : "form__item_right"
+            }`}
             type="email"
-            minLength="2"
-            maxLength="40"
             value={email}
             onChange={handleChangeEmail}
             required
           />
           <span id="name-input-error" className="form__item-error">
-            {props.message}
+            {emailError}
           </span>
         </label>
         <label className="form__field form__field-text">
           Пароль
           <input
             id="password-input"
-            className="form__item form__item_auth"
+            className={`form__item ${passwordError ? "form__item-error" : ""}`}
             type="password"
-            minLength="2"
-            maxLength="200"
             value={password}
             onChange={handleChangePassword}
             required
           />
           <span id="about-input-error" className="form__item-error">
-            {props.message}
+            {passwordError}
           </span>
         </label>
+        <div className="form__item-error">
+            {props.message}
+        </div>
+        <div className="form__handlers">
+          <button
+            className={`submit__button-form ${
+              !formValid ? "submit__button-form_disabled" : ""
+            }`}
+            type="submit"
+            disabled={!formValid}
+          >
+            Войти
+          </button>
+        </div>        
       </Form>
     </>
   );

@@ -6,14 +6,18 @@
 
 .header-nav__movies {
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 13px;
 	line-height: 18px;
 	text-decoration: none;
-	margin: 0 16px 0 44px;
+	margin: 0 16px 0 0;		
 	transition: 0.1s linear 0.1s;
 	display: block;
 	color: #000;
+}
+
+.header-nav__movies:first-child {
+	margin: 0 16px 0 44px;	
 }
 
 .header-nav__movies:hover {
@@ -21,20 +25,8 @@
 	cursor: pointer;
 }
 
-.header-nav__saved-movies {
-	font-style: normal;
-	font-weight: normal;
-	font-size: 13px;
-	line-height: 18px;
-	color: #000;
-	text-decoration: none;
-	transition: 0.1s linear 0.1s;
-	display: block;
-}
-
-.header-nav__saved-movies:hover {
-	opacity: 0.8;
-	cursor: pointer;
+.header-nav__movies_active {
+	font-weight: 500;
 }
 
 .header-auth__link {
@@ -46,7 +38,6 @@
 }
 
 .header-auth__register {
-	font-family: Inter;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 12px;

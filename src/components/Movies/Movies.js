@@ -12,10 +12,24 @@ function Movies(props) {
 			<>
 				<Header>
 					<Logo />
-					<Navigation onClick={props.onMenu} />
+					<Navigation 
+						onClick={props.onMenu}
+					/>
 				</Header>
-				<SearchForm />	
-					<MoviesCardList />				
+				<SearchForm 
+					onGetMovies={props.onGetMovies}
+					onFilter={props.onFilter}
+					isShortMovie={props.isShortMovie}
+				/>	
+				<MoviesCardList 
+					movies={props.movies}
+					onGetMovies={props.handleGetMovies}
+					onAddMovie={props.onAddMovie}
+					isSavedMovies={false}
+					message={props.message}
+					savedMovies={props.savedMovies}
+					likedMovies={props.likedMovies}		
+				/>
 				<Footer />
     </>
     );

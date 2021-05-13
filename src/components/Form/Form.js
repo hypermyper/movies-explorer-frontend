@@ -11,11 +11,6 @@ function Form(props) {
           <h2 className="form__title">{props.title}</h2>
           <fieldset className="form__input-container">
             {props.children}
-            <div className="form__handlers">
-              <button className="submit__button-form" type="submit">
-                {props.isLoading}
-              </button>
-            </div>
           </fieldset>
           {props.Link}
         </div>
