@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../Menu/Menu.css";
 import "../Header/Header.css";
 
@@ -13,9 +13,27 @@ function Menu(props) {
           onClick={props.onClose}
         />
         <nav className="popup-nav__wrap">
-          <Link to="/" className="popup__nav">Главная</Link>
-          <Link to="/movies" className="popup__nav">Фильмы</Link>
-          <Link to="/movies" className="popup__nav">Сохраненные фильмы</Link>
+          <NavLink 
+            to="/" exact 
+            className="popup__nav"
+            activeClassName="popup__nav_active"
+          >
+            Главная
+          </NavLink>
+          <NavLink 
+            to="/movies" 
+            className="popup__nav"
+            activeClassName="popup__nav_active"            
+          >
+            Фильмы
+          </NavLink>
+          <NavLink 
+            to="/saved-movies" 
+            className="popup__nav"
+            activeClassName="popup__nav_active"            
+          >
+            Сохраненные фильмы
+          </NavLink>
         </nav>
 				<Link to="/profile" className="header-auth__link header-auth__link_popup">
 					Аккаунт <div className="header__profile" />

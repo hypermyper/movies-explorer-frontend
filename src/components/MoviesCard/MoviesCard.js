@@ -31,17 +31,32 @@ function MoviesCard(props) {
     props.onDelete(props.movie);
   }  
 
+  function declOfNum(n, text_forms) {  
+    n = Math.abs(n) % 100; 
+    var n1 = n % 10;
+    if (n === 1) { 
+      return text_forms[0]; 
+    }     
+    if (n1 > 1 && n1 < 5) { 
+      return text_forms[1]; 
+    }
+    return text_forms[2];
+  }  
+
     return (
   		<>
         <article className="movie-card">
           <div className="movie-card__body">
-            <h3 className="movie-card__title">
+            <h3 className="movie-card__title" title={props.name || props.movie.nameRU}>
               {props.name || props.movie.nameRU}
             </h3>
             <p className="movie-card__duration">
-              {`${Math.floor(
-                (props.duration || props.movie.duration) / 60
-              )} ч ${(props.duration || props.movie.duration) % 60} мин`}
+            {Math.floor((props.duration || props.movie.duration) / 60) !== 0 ? 
+              `${Math.floor((props.duration || props.movie.duration) / 60)} ${declOfNum(Math.floor((props.duration || props.movie.duration) / 60), ['час', 'часа', 'часов'])}`
+             : (
+              ""
+              )}
+              {` ${(props.duration || props.movie.duration) % 60} мин.`}
             </p>
           </div>
           <a

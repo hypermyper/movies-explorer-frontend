@@ -40,7 +40,6 @@ function App() {
     setIsMenuOpen();
   }
 
-
   useEffect(() => {
     const path = location.pathname;
     const jwt = localStorage.getItem("jwt");
@@ -234,7 +233,7 @@ function App() {
   }	
 
   function filterShortMovies(arr) {
-    if (arr.length !== 0 || arr !== "undefind") {
+    if (arr.length !== 0 || arr !== "undefined") {
       return arr.filter((movie) =>
         shortMovies ? movie.duration <= SHORTMOVIES_DURATION : true
       );
