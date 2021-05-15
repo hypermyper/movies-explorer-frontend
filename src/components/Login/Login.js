@@ -8,6 +8,13 @@ function Login(props) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [formValid, setFormValid] = useState(false);  
+  const [isInputDisabled, setIsInputDisabled] = useState(true);
+
+  function setInputDisabled() {
+		if (formValid) {
+    	setIsInputDisabled(!isInputDisabled);
+		}
+  }  
 
   function handleChangeEmail(e) {
     const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
@@ -31,7 +38,6 @@ function Login(props) {
     setPassword(e.target.value);
   }
 
-
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) {
@@ -39,6 +45,12 @@ function Login(props) {
     }
     props.onLogin(email, password);
   }
+
+  useEffect(() => {
+    if (props.message) {
+    	setIsInputDisabled(true);
+    }
+  }, [props.message]);  
 
   useEffect(() => {
     if (props.loggedIn) {
@@ -78,6 +90,7 @@ function Login(props) {
             type="email"
             value={email}
             onChange={handleChangeEmail}
+						disabled={!isInputDisabled && !props.unDisableOnError}     
             required
           />
           <span id="name-input-error" className="form__item-error">
@@ -92,6 +105,7 @@ function Login(props) {
             type="password"
             value={password}
             onChange={handleChangePassword}
+						disabled={!isInputDisabled && !props.unDisableOnError}                   
             required
           />
           <span id="about-input-error" className="form__item-error">
@@ -108,6 +122,7 @@ function Login(props) {
             }`}
             type="submit"
             disabled={!formValid}
+            onClick={setInputDisabled} 
           >
             Войти
           </button>

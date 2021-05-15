@@ -12,6 +12,11 @@ function SearchForm(props) {
 
   function handleSearchMovie(e) {
     setFindedMovie(e.target.value);
+    if (e.target.value.length === 0) {
+      setError("Нужно ввести ключевое слово");
+    } else {
+      setError("");
+    }    
   }  
 
   function onSearchFocus(e) {
@@ -42,6 +47,7 @@ function SearchForm(props) {
 
   return (
     <section className="search-form-section">
+      <div className="form__item-error">{error}</div>
       <div className={isActive ? 'search-form__container search-form__container_active' : 'search-form__container'}>
         <div className="search-form__search-icon" />
         <form 
@@ -68,7 +74,6 @@ function SearchForm(props) {
           onClick={handleSubmit}
           disabled={!formValid}
         ></button>
-        <div className="form__item-error">{error}</div>
 				<div className="search-form__vertical-divider"></div>
 				<FilterCheckbox 
           onFilter={props.onFilter}

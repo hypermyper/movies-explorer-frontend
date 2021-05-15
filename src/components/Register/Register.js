@@ -11,16 +11,23 @@ function Register(props) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [formValid, setFormValid] = useState(false);	
+	const [isInputDisabled, setIsInputDisabled] = useState(true);
+
+	function setInputDisabled() {
+		if (formValid) {
+    	setIsInputDisabled(!isInputDisabled);
+		}
+  }  
 	
   function handleChangeName(e) {
-    const validName = /^[a-zA-Z- ]+$/.test(e.target.value);
+    const validName = /^[а-яА-ЯёЁa-zA-Z- ]+$/.test(e.target.value);
 
     if (e.target.value.length < 2) {
       setNameError("Длина имени должна быть не менее 2 символов");
     } else if (e.target.value.length > 30) {
       setNameError("Длина имени должна должна быть не более 30 символов");
     } else if (!validName) {
-      setNameError("Имя должно быть указано латиницей");
+      setNameError("Имя должно содержать только латиницу, кириллицу, пробел или дефис");
     } else {
       setNameError("");
     }
@@ -41,8 +48,8 @@ function Register(props) {
   }
 
   function handleChangePassword(e) {
-    if (e.target.value.length < 6) {
-      setPasswordError("Пароль должен быть не менее 6 символов");
+    if (e.target.value.length < 8) {
+      setPasswordError("Пароль должен быть не менее 8 символов");
     } else {
       setPasswordError("");
     }
@@ -53,6 +60,13 @@ function Register(props) {
     e.preventDefault();
     props.onRegister(name, email, password);
   }
+
+  // useEffect(() => {
+  //   if (props.unDisableOnError) {
+	// 		console.log(props.unDisableOnError);
+  //   	setIsInputDisabled(true);
+  //   }
+  // }, [props.unDisableOnError]);  	
 
   useEffect(() => {
     if (
@@ -93,6 +107,7 @@ function Register(props) {
 						type="text"
 						value={name}
 						onChange={handleChangeName}
+						disabled={!isInputDisabled && !props.unDisableOnError}     
 						required
 					/>
 					<span id="name-input-error" className="form__span-error">{nameError}</span>
@@ -105,6 +120,7 @@ function Register(props) {
 						type="text"
 						value={email}
 						onChange={handleChangeEmail}
+						disabled={!isInputDisabled && !props.unDisableOnError}     
 						required
 					/>
 					<span id="name-input-error" className="form__span-error">{emailError}</span>
@@ -117,6 +133,7 @@ function Register(props) {
 						type="password"
 						value={password}
 						onChange={handleChangePassword}
+						disabled={!isInputDisabled && !props.unDisableOnError}  
 						required
 					/>
 					<span id="about-input-error" className="form__span-error">{passwordError}</span>
@@ -131,6 +148,7 @@ function Register(props) {
 						}`}
 						type="submit"
 						disabled={!formValid}
+						onClick={setInputDisabled} 
 					>
 						Зарегистрироваться
 					</button>

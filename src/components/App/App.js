@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation, Redirect } from "react-router-dom";
 import "./App.css";
 
 import Main from '../Main/Main';
@@ -27,6 +27,7 @@ function App() {
 	const [shortMovies, setShortMovies] = useState(false);
 	const [message, setMessage] = useState("");
   const [moviesMessage, setMoviesMessage] = useState("");	
+  const [unDisableOnError, setUnDisableOnError] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const history = useHistory();
@@ -43,7 +44,7 @@ function App() {
   useEffect(() => {
     const path = location.pathname;
     const jwt = localStorage.getItem("jwt");
-    if (jwt !== null) {
+    if (jwt) {
       auth
         .getContent(jwt)
         .then((res) => {
@@ -77,8 +78,10 @@ function App() {
       .catch((err) => {
         if (err === 409) {
           setMessage("Пользователь с таким email уже существует");
+          setUnDisableOnError(true);
         } else {
           setMessage("При регистрации пользователя произошла ошибка");
+          setUnDisableOnError(true);
         }
       });
   }	
@@ -102,11 +105,14 @@ function App() {
       .catch((err) => {
         console.log(`---${err}`);
         setMessage("При авторизации произошла ошибка");
+        setUnDisableOnError(true);
         if (err === 401) {
           setMessage("Пользователь с таким email не найден");
+          setUnDisableOnError(true);
         }
         if (err === 400) {
           setMessage("Неверный email или пароль");
+          setUnDisableOnError(true);
         }
         localStorage.removeItem("jwt");
       });
@@ -312,17 +318,27 @@ function App() {
           />
 				</Route>
         <Route path="/sign-up">
-          <Register 
-            onRegister={handleRegister} 
-            message={message}
-          />
+          {
+            loggedIn 
+              ? <Redirect to="/movies" />
+              : <Register 
+                  onRegister={handleRegister} 
+                  message={message}
+                  unDisableOnError={unDisableOnError}
+                />
+          }  
         </Route>
         <Route path="/sign-in">
-          <Login 
-            onLogin={handleLogin} 
-            loggedIn={loggedIn} 
-            message={message} 
-          />
+          {
+            loggedIn 
+              ? <Redirect to="/movies" />
+              : <Login 
+                  onLogin={handleLogin} 
+                  loggedIn={loggedIn} 
+                  message={message} 
+                  unDisableOnError={unDisableOnError}                  
+                />
+          }
         </Route>		
         <ProtectedRoute
           path="/movies"

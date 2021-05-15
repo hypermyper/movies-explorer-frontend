@@ -1,7 +1,7 @@
 import { MAIN_API } from "./constants";
 
 const headers = {
-  Accept: "application/json",
+  "Accept": "application/json",
   "Content-Type": "application/json",
 };
 
@@ -31,8 +31,8 @@ export const authorize = (email, password) => {
     method: "POST",
     headers: headers,
     body: JSON.stringify({
-      password,
       email,
+      password,
     }),
   })
     .then((res) => res.json())

@@ -14,9 +14,9 @@ class MainApi {
     return fetch(`${this._url}${"users"}/${"me"}`, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${jwt}`,
+        "Authorization": `Bearer ${jwt}`,
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
     }).then(this._getResponse);
   }
@@ -36,9 +36,9 @@ class MainApi {
     return fetch(`${this._url}${"movies"}`, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${jwt}`,
+        "Authorization": `Bearer ${jwt}`,
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
     }).then(this._getResponse);
   }
@@ -47,9 +47,9 @@ class MainApi {
     return fetch(`${this._url}${"movies"}`, {
       method: "POST",
       headers: {
-        authorization: `Bearer ${jwt}`,
+        "Authorization": `Bearer ${jwt}`,
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify({
         country: movie.country,
@@ -78,9 +78,9 @@ class MainApi {
 const mainApi = new MainApi({
   url: MAIN_API,
   headers: {
-    authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "Content-Type": "application/json",
-    Accept: "application/json",
+    "Accept": "application/json",
   },
 });
 

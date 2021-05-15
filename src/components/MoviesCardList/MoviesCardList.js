@@ -63,13 +63,12 @@ function useWindowSize() {
             ) : (
               props.movies
                 .slice(0, counter)
-                .map((movie, id) => (
+                .map((movie) => (
                   <MoviesCard
                     movie={movie}
                     name={movie.nameRU}
                     duration={movie.duration}
-                    key={id}
-                    id={movie._id}
+                    key={movie._id}
                     {...movie}
                     isSavedMovies={props.isSavedMovies}
                     onAddMovie={props.onAddMovie}

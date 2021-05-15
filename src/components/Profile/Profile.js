@@ -48,9 +48,9 @@ function Profile(props) {
 
     if (!validEmail) {
       setEmailError("Неверный формат почты");
-      setFormValid(false);
     } else {
       setEmailError("");
+      setFormValid(true);
     }
     setEmail(e.target.value);
   }
@@ -141,6 +141,7 @@ function Profile(props) {
                     placeholder="Почта"
                     value={email}
                     onChange={handleChangeEmail}
+                    disabled={!isInputDisabled}                          
                     required
                   />
                 </label>
