@@ -27,7 +27,7 @@ function SavedMovies(props) {
 						message={props.message}
 					/>
 					) : (
-						<p className="movies-message">Нет сохранённых фильмов</p>
+						<p className="movies-nofound">Нет сохранённых фильмов</p>
 					)}
 				<Footer />
     	</>
