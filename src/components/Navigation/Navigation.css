@@ -1,0 +1,85 @@
+.header-nav {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.header-nav__movies {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 18px;
+	text-decoration: none;
+	margin: 0 16px 0 0;		
+	transition: 0.1s linear 0.1s;
+	display: block;
+	color: #000;
+}
+
+.header-nav__movies:first-child {
+	margin: 0 16px 0 44px;	
+}
+
+.header-nav__movies:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.header-nav__movies_active {
+	font-weight: 500;
+}
+
+.header-auth__link {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
+}
+
+.header-auth__register {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+	color: #ffffff;
+	text-decoration: none;
+	margin-right: 30px;
+	transition: 0.1s linear 0.1s;
+}  
+
+.header__profile {
+	background: url(../../images/profile.svg) center no-repeat #f4f4f4;
+	background-size: 11px;
+	width: 11px;
+	height: 14px;
+	display: block;
+	padding: 8px;
+	border-radius: 4px;
+	margin-left: 17px;
+}
+
+.header__menu {
+	background: url(../../images/menu.svg) center no-repeat;
+	background-size: cover;
+	width: 28px;
+	height: 23px;
+	padding: 0;
+	transition: 0.1s linear 0.1s;
+	display: none;
+}
+
+.header__menu:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}  
+
+@media screen and (max-width: 768px) {
+	.header-nav, .header-auth__link {
+		display: none;
+	}
+
+  .header__menu {
+    display: block;
+  }	
+}

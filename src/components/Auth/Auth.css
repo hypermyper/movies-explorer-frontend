@@ -1,0 +1,56 @@
+.header-auth {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 500;  
+  font-size: 12px;  
+  line-height: 16px;  
+  transition: 0.1s linear 0.1s;  
+}
+
+.header-auth__signup {
+  margin-right: 30px;
+  text-decoration: none;  
+  color: #000;
+  cursor: pointer;  
+}
+
+.header-auth__signup:hover {
+  opacity: 0.8;
+}
+
+.header-auth__signin {
+  width: 76px;
+  height: 32px;
+  color: #fff;
+  background: #3456F3;
+  border-radius: 3px;
+  border: 0;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 0;
+  box-sizing: border-box;  
+  cursor: pointer;  
+}
+
+.header-auth__signin:hover {
+  opacity: 0.8;
+}
+
+.header-auth__signin:active {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 320px) {
+  .header-auth {
+    font-size: 10px;    
+  }
+  .header-auth__signup {
+    margin-right: 14px;  
+  }
+  .header-auth__signin {
+    width: 54px;
+    height: 26px;
+    padding: 4px 0;
+  }  
+}
